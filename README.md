@@ -8,6 +8,26 @@ Developed by a five-person team at the University of the West of England (UWE Br
 
 PAMS provides role-specific interfaces for managing day-to-day apartment operations, from registering tenants and tracking maintenance requests to reviewing financial performance across multiple locations.
 
+### Manager Dashboard
+![Manager Dashboard](documentation/demo/manager-page.gif)
+*Monitor operations across Bristol, Cardiff, London and Manchester, with access to management information and all other dashboards.*
+
+### Administrator Dashboard
+![Administrator Dashboard](documentation/demo/admin-dashboard.gif)
+*Manage user accounts and monitor operations for a single location.*
+
+### Maintenance Dashboard
+![Maintenance Dashboard](documentation/demo/maintenance-page.gif)
+*Record maintenance issues, manage priorities and track requests through to resolution, including associated costs and time taken.*
+
+### Finance Manager Dashboard
+![Finance Manager Dashboard](documentation/demo/finance-page.gif)
+*Review financial summaries and generate graphical reports to compare collected and outstanding rent across locations.*
+
+### Front Desk Dashboard
+![Front Desk Dashboard](documentation/demo/frontdesk-page.gif)
+*Manage tenant records, apartment assignments, lease agreements and complaints through the application's graphical interface.*
+
 ## Key Features
 
 - **Role-based access:** Separate interfaces and permissions for Managers, Administrators, Finance, Front Desk and Maintenance staff.

@@ -16,8 +16,27 @@ $dbPath = Join-Path $projectRoot "paragonapartments\database\paragonapartments.d
 $seedScriptPath = Join-Path $setupDir "tools\create_sqlite_testdata.py"
 $mainPath = Join-Path $projectRoot "paragonapartments\main.py"
 
-if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
-    throw "Python was not found on PATH. Install Python and retry."
+$pythonLauncher = $null
+if (Get-Command python -ErrorAction SilentlyContinue) {
+    try {
+        & python --version 2>$null
+        if ($LASTEXITCODE -eq 0) {
+            $pythonLauncher = "python"
+        }
+    } catch {
+    }
+}
+if (-not $pythonLauncher -and (Get-Command py -ErrorAction SilentlyContinue)) {
+    try {
+        & py --version 2>$null
+        if ($LASTEXITCODE -eq 0) {
+            $pythonLauncher = "py"
+        }
+    } catch {
+    }
+}
+if (-not $pythonLauncher) {
+    throw "A working Python launcher was not found. Install Python and retry."
 }
 
 Push-Location $projectRoot
@@ -25,7 +44,10 @@ try {
     # Create virtual environment
     Write-Host ""
     Write-Host "Creating virtual environment..." -ForegroundColor Yellow
-    & python -m venv $venvPath
+    & $pythonLauncher -m venv $venvPath
+    if ($LASTEXITCODE -ne 0) {
+        throw "Failed to create the virtual environment."
+    }
 
     # Activate virtual environment
     Write-Host "Activating virtual environment..." -ForegroundColor Yellow

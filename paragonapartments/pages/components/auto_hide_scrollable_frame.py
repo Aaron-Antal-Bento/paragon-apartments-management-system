@@ -115,7 +115,7 @@ class AutoHideScrollableFrame(CTkScrollableFrame):
             return
         
         # Call parent implementation with scroll speed applied
-        if self.check_if_master_is_canvas(event.widget):
+        if self._check_if_valid_scroll(event.widget):
             if sys.platform.startswith("win"):
                 if self._parent_canvas.yview() != (0.0, 1.0):
                     self._parent_canvas.yview("scroll", -int(event.delta / 6) * self._scroll_speed, "units")
